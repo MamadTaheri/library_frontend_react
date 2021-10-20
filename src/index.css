@@ -10,6 +10,28 @@ html {
 }
 
 .side-bar {
+    padding: 2rem;
     background-color: #211c1b;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-height: 100vh;
+    height: 100vh;
+}
+
+.side-bar ul {
+    list-style: none;
+}
+
+.side-bar ul li {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.2s all ease-in-out;
+}
+
+.side-bar ul li:hover {
+    background-color: blue;
 }
