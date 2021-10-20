@@ -12,10 +12,12 @@ const Sidebar = () => {
       <br />
       <hr className="bg-white" />
       <ul>
-        <li>
-          <FaAddressBook className="ml-3" />
-          <span>کاربران</span>
-        </li>
+        <Link to="/users">
+          <li>
+            <FaAddressBook className="ml-3" />
+            <span>کاربران</span>
+          </li>
+        </Link>
         <li>
           <FaBookOpen className="ml-3" />
           <span>کتابها</span>
