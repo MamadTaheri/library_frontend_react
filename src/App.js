@@ -6,20 +6,20 @@ import Sidebar from "./UI/Sidebar";
 const App = () => {
   return (
     <div className="container-fluid">
-      <div className="row">
-        <aside className="col-sm-2 side-bar">
-          <Sidebar />
-        </aside>
-        <main className="col-sm-10 text-center">
-          <BrowserRouter>
+      <BrowserRouter>
+        <div className="row">
+          <aside className="col-sm-2 side-bar">
+            <Sidebar />
+          </aside>
+          <main className="col-sm-10 text-center">
             <Switch>
               <Route path="/">
                 <Home />
               </Route>
             </Switch>
-          </BrowserRouter>
-        </main>
-      </div>
+          </main>
+        </div>
+      </BrowserRouter>
     </div>
   );
 };

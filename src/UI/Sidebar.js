@@ -1,11 +1,14 @@
 import React from "react";
 
 import { FaAddressBook, FaBookOpen } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <>
-      <h4>داشبورد</h4>
+      <Link to="/">
+        <h4>داشبورد</h4>
+      </Link>
       <br />
       <hr className="bg-white" />
       <ul>
@@ -17,7 +20,6 @@ const Sidebar = () => {
           <FaBookOpen className="ml-3" />
           <span>کتابها</span>
         </li>
-         
       </ul>
     </>
   );

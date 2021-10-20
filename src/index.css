@@ -20,6 +20,11 @@ html {
     height: 100vh;
 }
 
+.side-bar a {
+    text-decoration: none;
+    color: #fff;
+}
+
 .side-bar ul {
     list-style: none;
 }
