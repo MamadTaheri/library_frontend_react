@@ -1,3 +1,13 @@
+@font-face {
+    font-family: IRANSansWeb;
+    src: url('./assets/fonts/IRANSansWeb(FaNum).eot');
+    src: url('./assets/fonts/IRANSansWeb(FaNum).eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/IRANSansWeb(FaNum).woff2') format('woff2'),
+    url('./assets/fonts/IRANSansWeb(FaNum).woff') format('woff'),
+    url('./assets/fonts/IRANSansWeb(FaNum).ttf') format('truetype');
+    font-weight: normal;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -7,6 +17,10 @@
 html {
     direction: rtl;
     text-align: right;
+}
+
+body {
+    font-family: IRANSansWeb;
 }
 
 .side-bar {
