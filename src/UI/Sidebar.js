@@ -1,5 +1,7 @@
 import React from "react";
 
+import { FaAddressBook, FaBookOpen } from "react-icons/fa";
+
 const Sidebar = () => {
   return (
     <>
@@ -7,8 +9,15 @@ const Sidebar = () => {
       <br />
       <hr className="bg-white" />
       <ul>
-        <li>کاربران</li>
-        <li>کتابها</li>
+        <li>
+          <FaAddressBook className="ml-3" />
+          <span>کاربران</span>
+        </li>
+        <li>
+          <FaBookOpen className="ml-3" />
+          <span>کتابها</span>
+        </li>
+         
       </ul>
     </>
   );
