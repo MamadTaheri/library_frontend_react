@@ -12,15 +12,17 @@ const Sidebar = () => {
       <br />
       <hr className="bg-white" />
       <ul>
-        <Link to="/users">
-          <li>
+        <li>
+          <Link to="/users">
             <FaAddressBook className="ml-3" />
             <span>کاربران</span>
-          </li>
-        </Link>
+          </Link>
+        </li>
         <li>
-          <FaBookOpen className="ml-3" />
-          <span>کتابها</span>
+          <Link to="/books">
+            <FaBookOpen className="ml-3" />
+            <span>کتابها</span>
+          </Link>
         </li>
       </ul>
     </>
