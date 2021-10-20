@@ -29,10 +29,10 @@ const App = () => {
     <div className="container-fluid">
       <BrowserRouter>
         <div className="row">
-          <aside className="col-sm-2 side-bar">
+          <aside className=" side-bar">
             <Sidebar />
           </aside>
-          <main className="col-sm-10 text-center">
+          <main className="col-sm-10 text-center main-content">
             <Switch>
               <Route path="/books">
                 <Books books={books} />
