@@ -1,13 +1,16 @@
 import React from "react";
 import UsersWrapper from "../components/user/UsersWrapper";
 
-import {FaPlus} from 'react-icons/fa'
+import { FaPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Users = ({ users }) => {
   return (
     <>
       <div className="container plus-button">
-        <FaPlus />
+        <Link to="/create-user">
+          <FaPlus />
+        </Link>
       </div>
       <div className="container custom-scrol">
         <br />

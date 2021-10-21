@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Books from "./pages/Books";
+import CreateUser from "./pages/CreateUser";
 import Home from "./pages/Home";
 import Users from "./pages/Users";
 import Sidebar from "./UI/Sidebar";
@@ -34,6 +35,9 @@ const App = () => {
           </aside>
           <main className="col-sm-10 text-center main-content">
             <Switch>
+              <Route path="/create-user" exact>
+                <CreateUser />
+              </Route>
               <Route path="/books">
                 <Books books={books} />
               </Route>
