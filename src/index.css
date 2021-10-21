@@ -23,6 +23,21 @@ body {
     font-family: IRANSansWeb;
 }
 
+::-webkit-scrollbar {
+    width:10px;
+    background-color:#211c1b;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0px -1px 13px #211c1b;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a00ff;
+    border-radius: 10px;
+}
+
 .side-bar {
     padding: 2rem;
     background-color: #211c1b;
@@ -63,17 +78,10 @@ body {
     margin: 0;
 }
 
-::-webkit-scrollbar {
-    width:10px;
-    background-color:#211c1b;
-}
-
-::-webkit-scrollbar-track {
-    box-shadow: inset 0px -1px 13px #211c1b;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #4a00ff;
-    border-radius: 10px;
+.plus-button {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 5rem;
+    color: #4a00ff;
 }
