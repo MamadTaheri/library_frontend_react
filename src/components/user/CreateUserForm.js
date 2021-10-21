@@ -1,46 +1,105 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
 const CreateUserForm = () => {
+  const [data, setData] = useState({
+    id: "",
+    name: "",
+    family: "",
+    socialNumber: "",
+  });
+
+  const saveNewUser = () => {
+    const newUserData = {
+      id: data.id,
+      name: data.name,
+      family: data.family,
+      socialNumber: data.socialNumber,
+    };
+
+    const saveNewUserUrl = "http://localhost:8085/api/savenewuser";
+
+    axios
+      .post(saveNewUserUrl, newUserData)
+      .then((response) => {
+        alert(response.data + " status code = " + response.status);
+        deleteData();
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const inputHandler = (event) => {
+    setData({
+      ...data,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    if (
+      data.id === "" ||
+      data.name === "" ||
+      data.family === "" ||
+      data.socialNumber === ""
+    ) {
+      alert("تمامی مقادیر الزامی است");
+    } else {
+      saveNewUser();
+    }
+  };
+
+  const deleteData = () => {
+    setData({
+      id: "",
+      name: "",
+      family: "",
+      socialNumber: "",
+    });
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className="form-group">
-          <label for="exampleInputEmail1"> آی دی</label>
+          <label> آی دی</label>
           <input
-            type="email"
+            type="number"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            name="id"
+            value={data.id}
+            onChange={inputHandler}
           />
         </div>
         <div className="form-group">
-          <label for="exampleInputPassword1">نام</label>
+          <label>نام</label>
           <input
-            type="password"
+            type="text"
             className="form-control"
-            id="exampleInputPassword1"
+            name="name"
+            value={data.name}
+            onChange={inputHandler}
           />
         </div>
         <div className="form-check">
-          <label className="form-check-label" for="exampleCheck1">
-            نام خانوادگی
-          </label>
+          <label> نام خانوادگی </label>
           <input
-            type="email"
+            type="text"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            name="family"
+            value={data.family}
+            onChange={inputHandler}
           />
         </div>
         <div className="form-check">
-          <label className="form-check-label" for="exampleCheck1">
-            کد ملی{" "}
-          </label>
+          <label> </label>
+          <label>کد ملی </label>
           <input
-            type="email"
+            type="number"
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            name="socialNumber"
+            value={data.socialNumber}
+            onChange={inputHandler}
           />
         </div>
         <br />
