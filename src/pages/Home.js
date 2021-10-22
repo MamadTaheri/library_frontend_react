@@ -9,11 +9,10 @@ const Home = ({loading}) => {
     <div className="container">
       <div className="">
          <span>وضعیت ارتباط با سرور : </span>
-         <span>
+         <span className={loading === "error" && "text-danger"}>
            {loading === "init" && "اولیه"}
            {loading === "loading" && "در حال دریافت اطلاعات از سرور"}
-           {loading === "users" && "کاربران از سرور دریافت شدند"}
-           {loading === "books" && "کلیه اطلاعات از سرور دریافت شدند"}
+           {loading === "ok" && "کلیه اطلاعات از سرور دریافت شدند"}
            {loading === "error" && "خطا در ارتباط با دیتابیس"}
          </span>
       </div>
