@@ -13,9 +13,6 @@ const Users = ({ users }) => {
         </Link>
       </div>
       <div className="container custom-scrol">
-        <br />
-        <br />
-        <br />
         <h4>کاربران ثبت شده : </h4>
         <br />
         <br />

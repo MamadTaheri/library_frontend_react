@@ -1,28 +1,29 @@
 import axios from "axios";
 import React, { useState } from "react";
 
+import swal from "sweetalert";
+
+
 const CreateUserForm = () => {
   const [data, setData] = useState({
-    id: "",
     name: "",
     family: "",
     socialNumber: "",
   });
 
   const saveNewUser = () => {
-    const newUserData = {
-      id: data.id,
-      name: data.name,
-      family: data.family,
-      socialNumber: data.socialNumber,
-    };
 
     const saveNewUserUrl = "http://localhost:8085/api/savenewuser";
 
     axios
-      .post(saveNewUserUrl, newUserData)
+      .post(saveNewUserUrl, data)
       .then((response) => {
-        alert(response.data + " status code = " + response.status);
+        swal({
+          title: "اطلاعیه",
+          text: "کاربر جدید با موفقیت ذخیره شد",
+          icon: "success",
+          button: "متوجه شدم",
+        });
         deleteData();
       })
       .catch((error) => console.log(error));
@@ -38,12 +39,13 @@ const CreateUserForm = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     if (
-      data.id === "" ||
-      data.name === "" ||
-      data.family === "" ||
-      data.socialNumber === ""
-    ) {
-      alert("تمامی مقادیر الزامی است");
+      data.name === "" || data.family === "" || data.socialNumber === "" ) {
+        swal({
+          title: "هشدار",
+          text: "وارد کردن تمام مقادیر الزامی است",
+          icon: "error",
+          button: "متوجه شدم",
+        });
     } else {
       saveNewUser();
     }
@@ -51,7 +53,6 @@ const CreateUserForm = () => {
 
   const deleteData = () => {
     setData({
-      id: "",
       name: "",
       family: "",
       socialNumber: "",
@@ -62,16 +63,6 @@ const CreateUserForm = () => {
     <>
       <form onSubmit={submitHandler}>
         <div className="form-group">
-          <label> آی دی</label>
-          <input
-            type="number"
-            className="form-control"
-            name="id"
-            value={data.id}
-            onChange={inputHandler}
-          />
-        </div>
-        <div className="form-group">
           <label>نام</label>
           <input
             type="text"
@@ -81,7 +72,7 @@ const CreateUserForm = () => {
             onChange={inputHandler}
           />
         </div>
-        <div className="form-check">
+        <div className="form-group">
           <label> نام خانوادگی </label>
           <input
             type="text"
@@ -91,7 +82,7 @@ const CreateUserForm = () => {
             onChange={inputHandler}
           />
         </div>
-        <div className="form-check">
+        <div className="form-group">
           <label> </label>
           <label>کد ملی </label>
           <input
