@@ -11,15 +11,21 @@ import swal from "sweetalert";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState("init");
 
   const usersUrl = "http://localhost:8085/api/users";
   const bookssUrl = "http://localhost:8085/api/books";
 
   useEffect(() => {
+    setLoading("loading");
     axios
       .get(usersUrl)
-      .then((response) => setUsers(response.data))
+      .then((response) => {
+        setLoading("users");
+        setUsers(response.data)
+      })
       .catch((error) => {
+        setLoading("error");
         swal({
           title: "خطای دریافت لیست کاربران",
           text: "دریافت اطلاعات از دیتابیس با مشکل مواجه شد",
@@ -30,8 +36,12 @@ const App = () => {
 
     axios
       .get(bookssUrl)
-      .then((response) => setBooks(response.data))
+      .then((response) => {
+        setLoading("books");
+        setBooks(response.data)
+      })
       .catch((error) => {
+        setLoading("error");
         swal({
           title: "خطای دریافت لیست کتابها",
           text: "دریافت اطلاعات از دیتابیس با مشکل مواجه شد",
@@ -60,7 +70,7 @@ const App = () => {
                 <Users users={users} />
               </Route>
               <Route path="/" exact>
-                <Home />
+                <Home loading={loading} />
               </Route>
             </Switch>
           </main>
