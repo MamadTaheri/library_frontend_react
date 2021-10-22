@@ -6,6 +6,7 @@ import CreateUser from "./pages/CreateUser";
 import Home from "./pages/Home";
 import Users from "./pages/Users";
 import Sidebar from "./UI/Sidebar";
+import swal from "sweetalert";
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -18,12 +19,26 @@ const App = () => {
     axios
       .get(usersUrl)
       .then((response) => setUsers(response.data))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        swal({
+          title: "خطای دریافت لیست کاربران",
+          text: "دریافت اطلاعات از دیتابیس با مشکل مواجه شد",
+          icon: "error",
+          button: "متوجه شدم",
+        });
+      });
 
     axios
       .get(bookssUrl)
       .then((response) => setBooks(response.data))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        swal({
+          title: "خطای دریافت لیست کتابها",
+          text: "دریافت اطلاعات از دیتابیس با مشکل مواجه شد",
+          icon: "error",
+          button: "متوجه شدم",
+        });
+      });
   }, []);
 
   return (
