@@ -85,3 +85,8 @@ body {
     font-size: 5rem;
     color: #4a00ff;
 }
+
+.spinner-img {
+    width: 20px;
+    height: 20px;
+}

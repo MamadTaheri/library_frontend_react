@@ -2,6 +2,7 @@ import React from "react";
 
 // images
 import flagImage from "../assets/images/flag.jpg";
+import spinner from '../assets/images/spinner.gif'
 
 const Home = ({loading}) => {
 
@@ -11,7 +12,7 @@ const Home = ({loading}) => {
          <span>وضعیت ارتباط با سرور : </span>
          <span className={loading === "error" && "text-danger"}>
            {loading === "init" && "اولیه"}
-           {loading === "loading" && "در حال دریافت اطلاعات از سرور"}
+           {loading === "loading" && <img className="spinner-img" src={spinner} alt="spinner" />}
            {loading === "ok" && "کلیه اطلاعات از سرور دریافت شدند"}
            {loading === "error" && "خطا در ارتباط با دیتابیس"}
          </span>
