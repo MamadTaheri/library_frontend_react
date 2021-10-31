@@ -1,4 +1,6 @@
 import React from "react";
+import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const User = ({user}) => {
   return (
@@ -8,6 +10,11 @@ const User = ({user}) => {
         <td>{user.name}</td>
         <td>{user.family}</td>
         <td>{user.socialNumber}</td>
+        <td>
+          <Link to={`/edit-user/${user.id}`}>
+            <FaEdit />
+          </Link>
+          </td>
       </tr>
     </>
   );

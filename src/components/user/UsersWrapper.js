@@ -11,6 +11,7 @@ const UsersWrapper = ({ users }) => {
             <th scope="col">نام</th>
             <th scope="col">نام خانوادگی</th>
             <th scope="col">کد ملی</th>
+            <th scope="col">عملیات</th>
           </tr>
         </thead>
         <tbody>

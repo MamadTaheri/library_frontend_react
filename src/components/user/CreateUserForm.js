@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 
 import swal from "sweetalert";
 
@@ -11,13 +12,17 @@ const CreateUserForm = () => {
     socialNumber: "",
   });
 
+  const history = useHistory()
+
+  console.log(history)
+
   const saveNewUser = () => {
 
     const saveNewUserUrl = "http://localhost:8085/api/savenewuser";
 
     axios
       .post(saveNewUserUrl, data)
-      .then((response) => {
+      .then(response => {
         swal({
           title: "اطلاعیه",
           text: "کاربر جدید با موفقیت ذخیره شد",
@@ -26,17 +31,17 @@ const CreateUserForm = () => {
         });
         deleteData();
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   };
 
-  const inputHandler = (event) => {
+  const inputHandler = event => {
     setData({
       ...data,
       [event.target.name]: event.target.value,
     });
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = event => {
     event.preventDefault();
     if (
       data.name === "" || data.family === "" || data.socialNumber === "" ) {
@@ -98,6 +103,9 @@ const CreateUserForm = () => {
 
         <button type="submit" className="btn btn-primary">
           ذخیره
+        </button>
+        <button type="submit" className="btn btn-secondary mr-5" onClick={() => {history.push("/users")}} >
+          انصراف
         </button>
       </form>
     </>

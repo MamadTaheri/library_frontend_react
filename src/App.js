@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Books from "./pages/Books";
 import CreateUser from "./pages/CreateUser";
+import EditUser from "./pages/EditUser";
 import CreateBook from "./pages/CreateBook";
 import Home from "./pages/Home";
 import Users from "./pages/Users";
@@ -19,13 +20,12 @@ const App = () => {
 
   useEffect(() => {
     setLoading("loading");
-    axios
-      .get(usersUrl)
-      .then((response) => {
+    axios.get(usersUrl)
+      .then(response => {
         setLoading("ok");
         setUsers(response.data)
       })
-      .catch((error) => {
+      .catch(error => {
         setLoading("error");
         swal({
           title: "خطای دریافت لیست کاربران",
@@ -35,13 +35,12 @@ const App = () => {
         });
       });
 
-    axios
-      .get(bookssUrl)
-      .then((response) => {
+    axios.get(bookssUrl)
+      .then(response => {
         setLoading("ok");
         setBooks(response.data)
       })
-      .catch((error) => {
+      .catch(error => {
         setLoading("error");
         swal({
           title: "خطای دریافت لیست کتابها",
@@ -61,6 +60,9 @@ const App = () => {
           </aside>
           <main className="col-sm-10 text-center main-content">
             <Switch>
+              <Route path="/edit-user/:id" exact>
+                <EditUser />
+              </Route>
               <Route path="/create-user" exact>
                 <CreateUser />
               </Route>
