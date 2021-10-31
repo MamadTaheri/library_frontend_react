@@ -1,27 +1,39 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 import swal from "sweetalert";
 
 
-const CreateUserForm = () => {
+const UserForm = ({type}) => {
+  
   const [data, setData] = useState({
     name: "",
     family: "",
     socialNumber: "",
   });
 
-  const history = useHistory()
+  const history = useHistory();
+  const {userId} = useParams();
 
-  console.log(history)
+  useEffect(() => {
+    if(type === "edit") {
+        axios.get(`http://localhost:8085/api/user?id=${userId}`)
+        .then(response => {
+          if(response.data !== null) {
+            setData({
+              name: response.data.name,
+              family: response.data.family,
+              socialNumber: response.data.socialNumber,
+            })
+          }
+        })
+    }
+     
+  }, [])
 
   const saveNewUser = () => {
-
-    const saveNewUserUrl = "http://localhost:8085/api/savenewuser";
-
-    axios
-      .post(saveNewUserUrl, data)
+    axios.post("http://localhost:8085/api/savenewuser", data)
       .then(response => {
         swal({
           title: "اطلاعیه",
@@ -51,8 +63,10 @@ const CreateUserForm = () => {
           icon: "error",
           button: "متوجه شدم",
         });
-    } else {
+    } else if(type === "create") {
       saveNewUser();
+    } else if(type === "edit") {
+      console.log("edit call")
     }
   };
 
@@ -112,4 +126,4 @@ const CreateUserForm = () => {
   );
 };
 
-export default CreateUserForm;
+export default UserForm;

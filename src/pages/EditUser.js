@@ -1,6 +1,6 @@
 import React from "react";
 
-import CreateUserForm from "../components/user/CreateUserForm";
+import UserForm from "../components/user/UserForm";
 
 const CreateUser = () => {
   return (
@@ -11,7 +11,7 @@ const CreateUser = () => {
       <br />
       <h1>ویرایش کاربر </h1>
       <br />
-      <CreateUserForm />
+      <UserForm type="edit" />
     </div>
   );
 };

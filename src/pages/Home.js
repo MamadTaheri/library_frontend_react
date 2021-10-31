@@ -6,14 +6,13 @@ import flagImage from "../assets/images/flag.jpg";
 import spinner from "../assets/images/spinner.gif";
 
 const Home = ({ loading, users, books }) => {
-  console.log(users.length);
 
   return (
     <div className="container-fluid">
       <div className="d-flex justify-content-between align-items-center">
         <div>
           <span>وضعیت ارتباط با سرور : </span>
-          <span className={loading === "error" && "text-danger"}>
+          <span className={loading === "error" ? "text-danger" : ""}>
             {loading === "init" && "اولیه"}
             {loading === "loading" && (
               <img className="spinner-img" src={spinner} alt="spinner" />

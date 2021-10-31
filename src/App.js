@@ -60,7 +60,7 @@ const App = () => {
           </aside>
           <main className="col-sm-10 text-center main-content">
             <Switch>
-              <Route path="/edit-user/:id" exact>
+              <Route path="/edit-user/:userId" exact>
                 <EditUser />
               </Route>
               <Route path="/create-user" exact>
