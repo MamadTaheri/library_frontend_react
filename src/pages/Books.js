@@ -12,7 +12,7 @@ const Books = ({ books }) => {
         </Link>
       </div>
       <div className="container custom-scrol">
-        <h4>کتابهای موجود و ثبت شده : </h4>
+        <h4>لیست کتابهای موجود و ثبت شده : </h4>
         <br />
         <br />
         <BooksWrapper books={books} />

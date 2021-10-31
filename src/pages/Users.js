@@ -13,7 +13,7 @@ const Users = ({ users }) => {
         </Link>
       </div>
       <div className="container custom-scrol">
-        <h4>کاربران ثبت شده : </h4>
+        <h4>لیست کاربران ثبت شده : </h4>
         <br />
         <br />
         <UsersWrapper users={users} />

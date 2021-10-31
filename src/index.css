@@ -90,3 +90,21 @@ body {
     width: 20px;
     height: 20px;
 }
+
+.img-logo {
+    width: 120px;
+    height: auto;
+}
+
+.custom-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 15rem;
+}
+
+.dash-icons {
+    font-size: 8rem;
+    padding: 8px;
+    color: #96089b;
+}
