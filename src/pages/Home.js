@@ -5,9 +5,8 @@ import { FaUserAlt } from "react-icons/fa";
 import flagImage from "../assets/images/flag.jpg";
 import spinner from "../assets/images/spinner.gif";
 
-const Home = ({ loading, users }) => {
-
-  console.log(users.length)
+const Home = ({ loading, users, books }) => {
+  console.log(users.length);
 
   return (
     <div className="container-fluid">
@@ -31,6 +30,32 @@ const Home = ({ loading, users }) => {
       <br />
       <br />
 
+      <div className="row">
+          <div className="card custom-card col-md-2">
+            <div>
+              <FaUserAlt className="dash-icons" />
+            </div>
+            <div className="card-body">
+              <h5 className="card-title">تعداد کاربران</h5>
+              <p className="card-text">
+                {users.length + "  "}
+                نفر
+              </p>
+            </div>
+          </div>
+          <div className="card custom-card col-md-2">
+            <div>
+              <FaUserAlt className="dash-icons" />
+            </div>
+            <div className="card-body">
+              <h5 className="card-title">تعداد کتابها</h5>
+              <p className="card-text">
+                {books.length + "  "}
+                کتاب
+              </p>
+            </div>
+          </div>
+      </div>
     </div>
   );
 };

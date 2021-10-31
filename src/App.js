@@ -76,7 +76,7 @@ const App = () => {
                 <Users users={users} />
               </Route>
               <Route path="/" exact>
-                <Home loading={loading} users={users} />
+                <Home loading={loading} users={users} books={books} />
               </Route>
             </Switch>
           </main>
