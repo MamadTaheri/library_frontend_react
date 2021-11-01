@@ -9,7 +9,7 @@ const CreateUser = () => {
       <br />
       <br />
       <br />
-      <h1>ایجاد کتاب جدید</h1>
+      <h1>ویرایش کتاب </h1>
       <br />
       <BookForm />
     </div>

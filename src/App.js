@@ -78,6 +78,9 @@ const App = () => {
                 <Route path="/create-user" exact>
                   <CreateUser />
                 </Route>
+                <Route path="/edit-book/:bookId" exact>
+                  <CreateBook />
+                </Route>
                 <Route path="/create-book" exact>
                   <CreateBook />
                 </Route>

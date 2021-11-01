@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import swal from "sweetalert";
 
 
-const CreateBookForm = () => {
+const BookForm = () => {
   const [data, setData] = useState({
     name: "",
     category: "علمی",
@@ -109,4 +109,4 @@ const CreateBookForm = () => {
   );
 };
 
-export default CreateBookForm;
+export default BookForm;
