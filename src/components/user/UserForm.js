@@ -1,11 +1,15 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import swal from "sweetalert";
 
+import { libraryContext } from "../../App";
+
 
 const UserForm = ({type}) => {
+
+  const {getUsersFromServer} = useContext(libraryContext);
   
   const [data, setData] = useState({
     name: "",
@@ -41,7 +45,8 @@ const UserForm = ({type}) => {
           icon: "success",
           button: "متوجه شدم",
         });
-        deleteData();
+        getUsersFromServer();
+        history.push("/users");
       })
       .catch(error => console.log(error));
   };
@@ -57,6 +62,7 @@ const UserForm = ({type}) => {
         icon: "success",
         button: "متوجه شدم",
       });
+      getUsersFromServer();
       history.push("/users");
     })
     .catch(error => console.log(error));
