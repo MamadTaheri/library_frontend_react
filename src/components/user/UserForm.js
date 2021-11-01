@@ -46,6 +46,22 @@ const UserForm = ({type}) => {
       .catch(error => console.log(error));
   };
 
+  const updateUser = () => {
+    const saveData = {...data, id: userId}
+    axios.post("http://localhost:8085/api/updateuser", saveData)
+    .then(response => {
+      console.log(response.data)
+      swal({
+        title: "اطلاعیه",
+        text: "کاربر با موفقیت آپدیت شد",
+        icon: "success",
+        button: "متوجه شدم",
+      });
+      history.push("/users");
+    })
+    .catch(error => console.log(error));
+  }
+
   const inputHandler = event => {
     setData({
       ...data,
@@ -66,7 +82,7 @@ const UserForm = ({type}) => {
     } else if(type === "create") {
       saveNewUser();
     } else if(type === "edit") {
-      console.log("edit call")
+      updateUser();
     }
   };
 

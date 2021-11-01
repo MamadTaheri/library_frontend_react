@@ -15,17 +15,23 @@ const App = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState("init");
 
-  const usersUrl = "http://localhost:8085/api/users";
   const bookssUrl = "http://localhost:8085/api/books";
 
   useEffect(() => {
     setLoading("loading");
-    axios.get(usersUrl)
-      .then(response => {
+    getUsersFromServer();
+    getBooksFromServer();
+  }, []);
+
+  const getUsersFromServer = () => {
+    const usersUrl = "http://localhost:8085/api/users";
+    axios
+      .get(usersUrl)
+      .then((response) => {
         setLoading("ok");
-        setUsers(response.data)
+        setUsers(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         setLoading("error");
         swal({
           title: "خطای دریافت لیست کاربران",
@@ -34,13 +40,16 @@ const App = () => {
           button: "متوجه شدم",
         });
       });
+  };
 
-    axios.get(bookssUrl)
-      .then(response => {
+  const getBooksFromServer = () => {
+    axios
+      .get(bookssUrl)
+      .then((response) => {
         setLoading("ok");
-        setBooks(response.data)
+        setBooks(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         setLoading("error");
         swal({
           title: "خطای دریافت لیست کتابها",
@@ -49,7 +58,7 @@ const App = () => {
           button: "متوجه شدم",
         });
       });
-  }, []);
+  };
 
   return (
     <div className="container-fluid">
