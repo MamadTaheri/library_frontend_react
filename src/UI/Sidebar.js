@@ -25,7 +25,7 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/">
+          <Link to="/exportbook">
             <FaUpload className="ml-3" />
             <span>امانت کتاب</span>
           </Link>

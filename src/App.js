@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Users from "./pages/Users";
 import Sidebar from "./UI/Sidebar";
 import swal from "sweetalert";
+import ExportBook from "./pages/ExportBook";
 
 export const libraryContext = createContext();
 
@@ -63,6 +64,13 @@ const App = () => {
       });
   };
 
+  const contextValues ={
+    getUsersFromServer: getUsersFromServer,
+    getBooksFromServer: getBooksFromServer,
+    users: users,
+    books: books
+  }
+
   return (
     <div className="container-fluid">
       <BrowserRouter>
@@ -71,10 +79,13 @@ const App = () => {
             <Sidebar />
           </aside>
           <main className="col-sm-10 text-center main-content">
-            <libraryContext.Provider value={{getUsersFromServer: getUsersFromServer, getBooksFromServer: getBooksFromServer}}>
+            <libraryContext.Provider value={contextValues}>
               <Switch>
                 <Route path="/edit-user/:userId" exact>
                   <EditUser />
+                </Route>
+                <Route path="/exportbook" exact>
+                  <ExportBook />
                 </Route>
                 <Route path="/create-user" exact>
                   <CreateUser />
