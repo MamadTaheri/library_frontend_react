@@ -12,6 +12,7 @@ const BooksWrapper = ({ books }) => {
             <th scope="col">دسته بندی </th>
             <th scope="col"> نویسنده</th>
             <th scope="col"> سال انتشار</th>
+            <th scope="col">ویرایش</th>
           </tr>
         </thead>
         <tbody>

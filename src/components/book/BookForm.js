@@ -1,10 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 import swal from "sweetalert";
 
+import { libraryContext } from "../../App";
 
-const BookForm = () => {
+const BookForm = ({type}) => {
+
+  const {getBooksFromServer} = useContext(libraryContext);
+
   const [data, setData] = useState({
     name: "",
     category: "علمی",
@@ -12,12 +17,28 @@ const BookForm = () => {
     publish_year: "",
   });
 
+  const history = useHistory();
+  const {bookId} = useParams();
+
+  useEffect(() => {
+    if(type === "edit") {
+        axios.get(`http://localhost:8085/api/book?id=${bookId}`)
+        .then(response => {
+          if(response.data !== null) {
+            setData({
+              name: response.data.name,
+              category: response.data.category,
+              author: response.data.author,
+              publish_year: response.data.publish_year,
+            })
+          }
+        })
+    }
+     
+  }, [])
+
   const saveNewBook = () => {
-
-    const saveNewUserUrl = "http://localhost:8085/api/savenewbook";
-
-    axios
-      .post(saveNewUserUrl, data)
+    axios.post("http://localhost:8085/api/savenewbook", data)
       .then((response) => {
         swal({
           title: "اطلاعیه",
@@ -25,10 +46,28 @@ const BookForm = () => {
           icon: "success",
           button: "متوجه شدم",
         });
-        deleteData();
+        getBooksFromServer();
+        history.push("/books");
       })
       .catch((error) => console.log(error));
   };
+
+  const updateBook = () => {
+    const saveData = {...data, id: bookId}
+    axios.post("http://localhost:8085/api/updatebook", saveData)
+    .then(response => {
+      console.log(response.data)
+      swal({
+        title: "اطلاعیه",
+        text: "کتاب با موفقیت آپدیت شد",
+        icon: "success",
+        button: "متوجه شدم",
+      });
+      getBooksFromServer();
+      history.push("/books");
+    })
+    .catch(error => console.log(error));
+  }
 
   const inputHandler = (event) => {
     setData({
@@ -47,18 +86,11 @@ const BookForm = () => {
           icon: "error",
           button: "متوجه شدم",
         });
-    } else {
+    } else if(type === "create") {
       saveNewBook();
+    } else if(type === "edit") {
+      updateBook();
     }
-  };
-
-  const deleteData = () => {
-    setData({
-      name: "",
-      category: "علمی",
-      author: "",
-      publish_year: "",
-    });
   };
 
   return (
@@ -103,6 +135,9 @@ const BookForm = () => {
 
         <button type="submit" className="btn btn-primary">
           ذخیره
+        </button>
+        <button type="submit" className="btn btn-secondary mr-5" onClick={() => {history.push("/books")}} >
+          انصراف
         </button>
       </form>
     </>
