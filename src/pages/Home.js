@@ -1,11 +1,20 @@
-import React from "react";
-import { FaUserAlt } from "react-icons/fa";
+import React, { useState } from "react";
+import moment from "jalali-moment";
+import DatePicker, { Calendar } from "react-datepicker2";
+import {
+  FaBook,
+  FaBookDead,
+  FaBookOpen,
+  FaBookReader,
+  FaUserAlt,
+} from "react-icons/fa";
 
 // images
-import flagImage from "../assets/images/flag.jpg";
+import avatar from "../assets/images/avatar.jpg";
 import spinner from "../assets/images/spinner.gif";
 
 const Home = ({ loading, users, books }) => {
+  const [date, setDate] = useState(moment());
 
   return (
     <div className="container-fluid">
@@ -21,39 +30,48 @@ const Home = ({ loading, users, books }) => {
             {loading === "error" && "خطا در ارتباط با دیتابیس"}
           </span>
         </div>
-        <img src={flagImage} alt="flag" className="rounded img-logo" />
+        <img src={avatar} alt="flag" className=" img-logo" />
       </div>
       <br />
-      <h1>به پروژه کتابخانه خوش آمدید</h1>
+      <h3 className="text-primary"> پروژه کتابخانه </h3>
       <br />
       <br />
       <br />
 
       <div className="row">
-          <div className="card custom-card col-md-2">
-            <div>
-              <FaUserAlt className="dash-icons" />
-            </div>
-            <div className="card-body">
-              <h5 className="card-title">تعداد کاربران</h5>
-              <p className="card-text">
-                {users.length + "  "}
-                نفر
-              </p>
-            </div>
+        <div className="custom-card col-md-4">
+          <div>
+            <FaUserAlt className="dash-icons" />
           </div>
-          <div className="card custom-card col-md-2">
-            <div>
-              <FaUserAlt className="dash-icons" />
-            </div>
-            <div className="card-body">
-              <h5 className="card-title">تعداد کتابها</h5>
-              <p className="card-text">
-                {books.length + "  "}
-                کتاب
-              </p>
-            </div>
+          <div className="card-body">
+            <h5 className="card-title">تعداد کاربران</h5>
+            <p className="card-text">
+              {users.length + "  "}
+              نفر
+            </p>
           </div>
+        </div>
+
+        <div className="custom-card col-md-4">
+          <div>
+            <FaBookOpen className="dash-icons" />
+          </div>
+          <div className="card-body">
+            <h5 className="card-title">تعداد کتابها</h5>
+            <p className="card-text">
+              {books.length + "  "}
+              کتاب
+            </p>
+          </div>
+        </div>
+
+        <div className="custom-card col-md-3">
+          <Calendar
+            value={date}
+            onChange={(date) => setDate(date)}
+            isGregorian={false}
+          />
+        </div>
       </div>
     </div>
   );
