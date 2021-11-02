@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FaAddressBook, FaBookOpen } from "react-icons/fa";
+import { FaAddressBook, FaBookOpen, FaDownload, FaUpload, FaUps } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -15,13 +15,25 @@ const Sidebar = () => {
         <li>
           <Link to="/users">
             <FaAddressBook className="ml-3" />
-            <span>کاربران</span>
+            <span>لیست کاربران</span>
           </Link>
         </li>
         <li>
           <Link to="/books">
             <FaBookOpen className="ml-3" />
-            <span>کتابها</span>
+            <span>لیست کتابها</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/">
+            <FaUpload className="ml-3" />
+            <span>امانت کتاب</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/">
+            <FaDownload className="ml-3" />
+            <span>بازگشت کتاب</span>
           </Link>
         </li>
       </ul>

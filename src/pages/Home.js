@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import moment from "jalali-moment";
-import DatePicker, { Calendar } from "react-datepicker2";
-import {
-  FaBook,
-  FaBookDead,
-  FaBookOpen,
-  FaBookReader,
-  FaUserAlt,
-} from "react-icons/fa";
+import { Calendar } from "react-datepicker2";
+import { FaBookOpen, FaUserAlt } from "react-icons/fa";
 
 // images
 import avatar from "../assets/images/avatar.jpg";
