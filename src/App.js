@@ -5,6 +5,7 @@ import Books from "./pages/Books";
 import CreateUser from "./pages/CreateUser";
 import EditUser from "./pages/EditUser";
 import CreateBook from "./pages/CreateBook";
+import EditBook from "./pages/EditBook";
 import Home from "./pages/Home";
 import Users from "./pages/Users";
 import Sidebar from "./UI/Sidebar";
@@ -79,7 +80,7 @@ const App = () => {
                   <CreateUser />
                 </Route>
                 <Route path="/edit-book/:bookId" exact>
-                  <CreateBook />
+                  <EditBook />
                 </Route>
                 <Route path="/create-book" exact>
                   <CreateBook />

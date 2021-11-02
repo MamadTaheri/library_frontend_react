@@ -2,7 +2,7 @@ import React from "react";
 
 import UserForm from "../components/user/UserForm";
 
-const CreateUser = () => {
+const EditUser = () => {
   return (
     <div className="container col-md-6">
       <br />
@@ -16,4 +16,4 @@ const CreateUser = () => {
   );
 };
 
-export default CreateUser;
+export default EditUser;

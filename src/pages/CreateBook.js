@@ -2,7 +2,7 @@ import React from "react";
 
 import BookForm from "../components/book/BookForm";
 
-const CreateUser = () => {
+const CreateBook = () => {
   return (
     <div className="container col-md-6">
       <br />
@@ -11,9 +11,9 @@ const CreateUser = () => {
       <br />
       <h1>ایجاد کتاب جدید</h1>
       <br />
-      <BookForm />
+      <BookForm type="create" />
     </div>
   );
 };
 
-export default CreateUser;
+export default CreateBook;

@@ -6,7 +6,6 @@ import swal from "sweetalert";
 
 import { libraryContext } from "../../App";
 
-
 const UserForm = ({type}) => {
 
   const {getUsersFromServer} = useContext(libraryContext);
