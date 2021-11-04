@@ -81,11 +81,11 @@ const App = () => {
           <main className="col-sm-10 text-center main-content">
             <libraryContext.Provider value={contextValues}>
               <Switch>
+                <Route path="/bookout" exact>
+                  <ExportBook />
+                </Route>
                 <Route path="/edit-user/:userId" exact>
                   <EditUser />
-                </Route>
-                <Route path="/exportbook" exact>
-                  <ExportBook />
                 </Route>
                 <Route path="/create-user" exact>
                   <CreateUser />

@@ -25,13 +25,13 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/exportbook">
+          <Link to="/bookout">
             <FaUpload className="ml-3" />
             <span>امانت کتاب</span>
           </Link>
         </li>
         <li>
-          <Link to="/">
+          <Link to="/bookoin">
             <FaDownload className="ml-3" />
             <span>بازگشت کتاب</span>
           </Link>
