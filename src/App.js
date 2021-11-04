@@ -10,7 +10,8 @@ import Home from "./pages/Home";
 import Users from "./pages/Users";
 import Sidebar from "./UI/Sidebar";
 import swal from "sweetalert";
-import ExportBook from "./pages/ExportBook";
+import BookExport from "./pages/BookExport";
+import BookImport from "./pages/BookImport"
 
 export const libraryContext = createContext();
 
@@ -81,8 +82,11 @@ const App = () => {
           <main className="col-sm-10 text-center main-content">
             <libraryContext.Provider value={contextValues}>
               <Switch>
+                <Route path="/bookin" exact>
+                  <BookImport />
+                </Route>
                 <Route path="/bookout" exact>
-                  <ExportBook />
+                  <BookExport />
                 </Route>
                 <Route path="/edit-user/:userId" exact>
                   <EditUser />

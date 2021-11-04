@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaStamp, FaUpload } from "react-icons/fa";
 import { Select, Button } from "antd";
 import "antd/dist/antd.css";
@@ -7,7 +7,7 @@ import { libraryContext } from "../App";
 
 const { Option } = Select;
 
-const Home = () => {
+const BookExport = () => {
   
   const [userId, setUserId] = useState(null);
   const [bookId, setBookId] = useState(null);
@@ -18,10 +18,13 @@ const Home = () => {
 
   const bookSelectChangeHandler = value => setBookId(value);
 
-  useEffect(() => {
-    console.log(userId);
-    console.log(bookId);
-  }, [userId, bookId])
+  const submitHandler = () => {
+    const data = {
+      userId: userId,
+      bookId: bookId
+    }
+    console.log(data);
+  }
 
   return (
     <div className="container">
@@ -80,7 +83,7 @@ const Home = () => {
       </div>
       <div className="row justify-content-center">
         <div className="col-md-6 mt-5">
-          <Button type="primary" shape="round" icon={<FaStamp/>} size="large" block>
+          <Button type="primary" shape="round" icon={<FaStamp/>} size="large" block onClick={submitHandler}>
             ثبت در دیتابیس
           </Button>
         </div>
@@ -89,4 +92,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default BookExport;
