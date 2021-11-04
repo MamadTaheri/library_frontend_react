@@ -1,29 +1,38 @@
 import React, { useContext, useState } from "react";
 import { FaStamp, FaUpload } from "react-icons/fa";
+import { useHistory, useParams } from "react-router-dom";
 import { Select, Button } from "antd";
 import "antd/dist/antd.css";
 
 import { libraryContext } from "../App";
+import axios from "axios";
 
 const { Option } = Select;
 
 const BookExport = () => {
+
+  const {getBooksFromServer} = useContext(libraryContext);
   
   const [userId, setUserId] = useState(null);
   const [bookId, setBookId] = useState(null);
 
+  const history = useHistory();
+
   const { users, books } = useContext(libraryContext);
+
+  const availableBooks = books.filter(book => book.amanat_status === 0 );
 
   const userSelectChangeHandler = value => setUserId(value); 
 
   const bookSelectChangeHandler = value => setBookId(value);
 
   const submitHandler = () => {
-    const data = {
-      userId: userId,
-      bookId: bookId
-    }
-    console.log(data);
+    const data = [bookId, userId]
+    axios.post("http://localhost:8085/api/bookout", data)
+    .then(response => {
+      getBooksFromServer();
+      history.push("/");
+    })
   }
 
   return (
@@ -68,7 +77,7 @@ const BookExport = () => {
             size="large"
             onChange={bookSelectChangeHandler}
           >
-            {books.map((book) => (
+            {availableBooks.map((book) => (
               <Option
                 key={book.id}
                 value={book.id}

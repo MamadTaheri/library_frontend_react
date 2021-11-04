@@ -9,6 +9,8 @@ import spinner from "../assets/images/spinner.gif";
 
 const Home = ({ loading, users, books }) => {
   const [date, setDate] = useState(moment());
+  const amanatCounts = books.filter(book => book.amanat_status === 1).length
+  console.log(amanatCounts)
 
   return (
     <div className="container-fluid">
@@ -33,7 +35,7 @@ const Home = ({ loading, users, books }) => {
       <br />
 
       <div className="row">
-        <div className="custom-card col-md-4">
+        <div className="custom-card col-md-3">
           <div>
             <FaUserAlt className="dash-icons" />
           </div>
@@ -46,14 +48,27 @@ const Home = ({ loading, users, books }) => {
           </div>
         </div>
 
-        <div className="custom-card col-md-4">
+        <div className="custom-card col-md-2">
           <div>
             <FaBookOpen className="dash-icons" />
           </div>
           <div className="card-body">
-            <h5 className="card-title">تعداد کتابها</h5>
+            <h5 className="card-title">کل کتابها</h5>
             <p className="card-text">
               {books.length + "  "}
+              کتاب
+            </p>
+          </div>
+        </div>
+
+        <div className="custom-card col-md-2">
+          <div>
+            <FaBookOpen className="dash-icons" />
+          </div>
+          <div className="card-body">
+            <h5 className="card-title"> امانت داده شده</h5>
+            <p className="card-text">
+              {amanatCounts + "  "}
               کتاب
             </p>
           </div>
