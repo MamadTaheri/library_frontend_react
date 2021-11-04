@@ -20,8 +20,6 @@ const App = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState("init");
 
-  const bookssUrl = "http://localhost:8085/api/books";
-
   useEffect(() => {
     setLoading("loading");
     getUsersFromServer();
@@ -48,11 +46,13 @@ const App = () => {
   };
 
   const getBooksFromServer = () => {
+    const bookssUrl = "http://localhost:8085/api/books";
     axios
       .get(bookssUrl)
       .then((response) => {
         setLoading("ok");
         setBooks(response.data);
+        console.log(response)
       })
       .catch((error) => {
         setLoading("error");
