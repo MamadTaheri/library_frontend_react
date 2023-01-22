@@ -1,4 +1,5 @@
 # Library Project
+![GitHub last commit](https://img.shields.io/github/last-commit/MamadTaheri/library_frontend_react)
 
 This is a simple project for simulating a basic library.
 
